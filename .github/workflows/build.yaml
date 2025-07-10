@@ -1,4 +1,4 @@
-name: Edge computer docker task build and push
+name: test
 
 on: workflow_dispatch
 
@@ -7,7 +7,7 @@ permissions:
   contents: write
 
 jobs:
-  staging-deploy:
+  test:
     runs-on: ubuntu-24.04
 
     steps:
@@ -27,7 +27,7 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-buildx-
 
-      - name: (edge computer docker task)Build, tag, and push image to Amazon ECR
+      - name: build
         uses: docker/build-push-action@v6
         with:
           context: ${{ github.workspace }}/
